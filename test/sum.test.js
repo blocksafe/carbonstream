@@ -1,4 +1,4 @@
-const sum = require('./../lib/sum')
+const sum = require('../lib/sum')
 
 
 test('This test ' + 'adds 1 + 2 to equal 3', () => {
