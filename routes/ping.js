@@ -19,11 +19,22 @@ _.get = async (req, res) => {
     res.json({
         'ping' : 'successful',
         'status' : code,
-        'timestamp' : Date.now()
+        'timestamp' : Date.now(),
+        'message': "I am alive"
     });
     return res.status(code).json(new ResquestError(code));
 };
 
+// _.all = async (req, res) => {   
+//     let code = 200;
+//     res.json({
+//         'ping' : 'successful',
+//         'status' : code,
+//         'timestamp' : Date.now(),
+//         'message': "I am alive"
+//     });
+//     return res.status(code).json(new ResquestError(code));
+// }
 
 
 // Export router module as _ to handle ping route and errors

@@ -21,10 +21,10 @@ describe('/', () => {
         expect(response.body).toHaveProperty('error');
     });
 
-    test('GET / should return a 404', async () => {
+    test('GET / should return a 200', async () => {
         const response = await request.get('/');
-        expect(response.status).toEqual(404);
-        expect(response.body).toHaveProperty('error');
+        expect(response.status).toEqual(200);
+        // expect(response.body).toHaveProperty('error');
     });
 
     test('PUT / should return a 404', async () => {
