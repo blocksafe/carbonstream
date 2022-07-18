@@ -17,7 +17,7 @@ exports.handler = async (event) => {
         // Parse the incoming webhook pyload
         console.log("Attempting to parse the incoming payload");
         const querystring = require('querystring');
-        leet parsed = querystring.decode(event.body);
+        let parsed = querystring.decode(event.body);
         let box = parsed.To.split('@')[0];
         let text = parsed['stripped-text'];
         let subject = parsed.subject;

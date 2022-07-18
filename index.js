@@ -21,13 +21,13 @@ _.run = async () => {
         let secretData = await secrets.load();
 
         // Start the mongo db server
-        await mongo.start();
+        await mongo.start(secretData);
 
         // Start the server
-        await server.start();
+        await server.start(secretData);
 
         // Start the background workers
-        await emailSender.start();
+        // await emailSender.start();
 
         return true;
     } catch (err) {
