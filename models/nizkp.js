@@ -16,18 +16,24 @@ const bcrypt = require('bcryptjs');
 // Model Dependencies
 const Policy = require('./policies');
 
+
 // Validation Dependencies
 const constraints = require('./../lib/constraints');
 const format = require('./../lib/format');
 const validate = require('validate.js');
 
+
+// For 
+const ellipticcurve = require("starkbank-ecdsa");
+var Ecdsa = ellipticcurve.Ecdsa;
 // Other Deependencies
 const moment = require('moment');
 
+const { v4: uuidv4 } = require('uuid');
 
 
 // Create model to export to app
-let _ = class extends base {
+let _ = class extends base{
 
     // Load a user, or create a new user with default values
     // Set Defaults using the parent base  class (models/mongo.js)
@@ -50,8 +56,10 @@ let _ = class extends base {
 
             // Inherit all defaults using the parent base  class (models/mongo.js) and use is as 'super' e.g super.save()
             super();
-
+            this.created = Date.now()
+            this._id = uuidv4();
             // Now set the default user data
+            this.verified = false;
             this.activated = false;
             this.banned = false;
             this.name = {
@@ -87,6 +95,9 @@ let _ = class extends base {
             }
 
             this.internal = {};
+            this.publicKey = null;
+            this.msg = null;
+            this.sig = null;
         }
     }
 
@@ -96,8 +107,66 @@ let _ = class extends base {
         await super.save('users');
     }
 
-    
+    async verifyEscada() {
+        Ecdsa.publicKey.fr
+        this.verification =  Ecdsa.verify(this.msg, this.sig, this.publicKey);
+        
+    }
+    // Set the first name
+    async setPublicKey(pub) {
 
+        try {
+
+            // Get the validation message, if any
+            // let msg = validate.single(firstname, constraints.name());
+
+            // if the validation passes, format the input accordingly
+            this.publicKey = pub;
+
+            // return msg;
+
+        } catch (err) {
+            throw( new Error(err));
+        }
+    }
+
+    // Set the first name
+    async setMsg(msg) {
+
+        try {
+
+            // Get the validation message, if any
+            // let msg = validate.single(firstname, constraints.name());
+
+            // if the validation passes, format the input accordingly
+            this.msg = msg;
+
+            // return msg;
+
+        } catch (err) {
+            throw( new Error(err));
+        }
+    }
+
+    // Set the first name
+    async setSig(sig) {
+
+        try {
+
+            // Get the validation message, if any
+            // let msg = validate.single(firstname, constraints.name());
+
+            // if the validation passes, format the input accordingly
+            this.sig = sig;
+
+            // return msg;
+
+        } catch (err) {
+            throw( new Error(err));
+        }
+    }
+
+    // async setPrivateFromPublic(pub, msg, )
     // Set the first name
     async setFirstName(firstname) {
 

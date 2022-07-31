@@ -22,7 +22,7 @@ _.get = async (req, res) => {
         'timestamp' : Date.now(),
         'message': "Heloo, I am alive."
     });
-    return res.status(code).json(new ResquestError(code));
+    return res.status(code).json(new RequestError(code));
 };
 
 // _.post = async (req, res) => {

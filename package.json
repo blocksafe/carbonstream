@@ -48,6 +48,7 @@
     "multer": "^1.4.5-lts.1",
     "nodemon": "^2.0.19",
     "qrcode": "^1.5.0",
+    "starkbank-ecdsa": "^1.1.4",
     "uuid": "^8.3.2",
     "validate.js": "^0.13.1",
     "winston": "^3.8.1",
