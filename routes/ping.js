@@ -20,10 +20,14 @@ _.get = async (req, res) => {
         'ping' : 'successful',
         'status' : code,
         'timestamp' : Date.now(),
-        'message': "I am alive"
+        'message': "Heloo, I am alive."
     });
     return res.status(code).json(new ResquestError(code));
 };
+
+// _.post = async (req, res) => {
+
+// }
 
 // _.all = async (req, res) => {   
 //     let code = 200;
